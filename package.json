@@ -1,0 +1,11 @@
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "brunocesarangst <bruno.angst@rede.ulbra.br>",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^4.2.3",
+    "lerna": "^3.20.2"
+  }
+}
