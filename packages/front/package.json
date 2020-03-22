@@ -3,19 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1"
   },
   "scripts": {
+    "lint": "npx eslint --fix src/**/*.js*",
+    "precommit": "lint-staged && yarn test",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "npx eslint --fix src/**/*.js*"
+    "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "env": {
@@ -40,18 +38,7 @@
     "plugins": [
       "react"
     ],
-    "rules": {
-      "react/jsx-filename-extension": [
-        "warn",
-        {
-          "extensions": [
-            ".jsx",
-            ".js",
-            ".test"
-          ]
-        }
-      ]
-    }
+    "rules": {}
   },
   "browserslist": {
     "production": [
@@ -66,13 +53,21 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "eslint": "^6.2.2",
-    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "prettier": "^1.19.1",
-    "typescript": "^3.8.3"
-  }
+    "lint-staged": "^9.2.5",
+    "typescript": "^3.6.2"
+  },
+  "lint-staged": {
+    "src/**/*.js*": [
+      "yarn lint",
+      "git add"
+    ]
+  },
+  "proxy": "http://localhost:5000"
 }

@@ -1,11 +1,20 @@
 {
-  "name": "monorepo",
-  "version": "1.0.0",
+  "name": "express-react-monorepo",
+  "version": "0.0.1",
   "main": "index.js",
-  "author": "brunocesarangst <bruno.angst@rede.ulbra.br>",
+  "author": "Benoit Hubert <benoithubert@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "lint": "lerna run lint --stream",
+    "start": "lerna run start --stream"
+  },
   "devDependencies": {
-    "husky": "^4.2.3",
-    "lerna": "^3.20.2"
+    "husky": "^3.0.4",
+    "lerna": "^3.16.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lerna run --concurrency 1 --stream precommit"
+    }
   }
 }
